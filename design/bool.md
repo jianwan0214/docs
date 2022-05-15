@@ -166,11 +166,25 @@ Empty set (0.00 sec)
 
 ### 7、bool值的排序
 对于bool列的排序，按照true大于false的原则，null值升序放在false之前，降序时放在最后。
+```sql
+create table t1(a bool);
+insert into t1 values(0),(1),(null);
+select * from t1 order by a asc;
++------+
+| a    |
++------+
+| NULL |
+| false|
+| true |
++------+
+3 rows in set (0.01 sec)
+
+```
 
 ### 7、工作计划
 |工作内容|工作时间安排|
 |:-:|:-:|
-|bool语法支持|1天|
-|bool类型的CURD操作|3天|
+|bool语法支持| 1天 |
+|bool类型的CURD操作| 4天 |
 |逻辑运算符| 3天 |
-|条件运算符和where子句| 4天 |
+|条件运算符和where子句| 3天 |
