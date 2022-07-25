@@ -43,10 +43,10 @@ LOAD DATA
 示例：
 ```sql
 ##非压缩文件格式
-LOAD DATA INFILE s3('s3.us-west-2.amazonaws.com', ['AKIAW2D4ZBGT5LF74CXS', 'rv/7n11qfbUFIEYiC+HFziSYcnmhyf31PP6p0sX9'], ['wangjian-test', 'a.txt', 'us-west-2']) INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE s3('s3.us-west-2.amazonaws.com', ['ABCD', 'ABCD'], ['wangjian-test', 'a.txt', 'us-west-2']) INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
 
 ##压缩文件格式
-LOAD DATA INFILE s3('s3.us-west-2.amazonaws.com', ['AKIAW2D4ZBGT5LF74CXS', 'rv/7n11qfbUFIEYiC+HFziSYcnmhyf31PP6p0sX9'], ['wangjian-test', 'a.txt.gz', 'us-west-2',['gzip']]) INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE s3('s3.us-west-2.amazonaws.com', ['AKIAW2D4ZBGT5LF74CXS', 'ABCD'], ['wangjian-test', 'a.txt.gz', 'us-west-2',['gzip']]) INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
 ```
 
 ### 3、功能限制
