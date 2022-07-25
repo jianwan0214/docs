@@ -7,7 +7,7 @@
 LOAD DATA
     [LOW_PRIORITY | CONCURRENT] [LOCAL]
     INFILE
-    S3(endpoint, [aws_access_key_id, aws_secret_access_key],[bucket, filepath, region, [compression]])
+    s3option(endpoint, [aws_access_key_id, aws_secret_access_key],[bucket, filepath, region, [compression]])
     [REPLACE | IGNORE]
     INTO TABLE tbl_name
     [PARTITION (partition_name [, partition_name] ...)]
@@ -43,10 +43,10 @@ LOAD DATA
 示例：
 ```sql
 ##非压缩文件格式
-LOAD DATA INFILE s3('s3.us-west-2.amazonaws.com', ['ABCD', 'ABCD'], ['wangjian-test', 'a.txt', 'us-west-2']) INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE s3option('s3.us-west-2.amazonaws.com', ['ABCD', 'ABCD'], ['wangjian-test', 'a.txt', 'us-west-2']) INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
 
 ##压缩文件格式
-LOAD DATA INFILE s3('s3.us-west-2.amazonaws.com', ['ABCD', 'ABCD'], ['wangjian-test', 'a.txt.gz', 'us-west-2',['gzip']]) INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE s3option('s3.us-west-2.amazonaws.com', ['ABCD', 'ABCD'], ['wangjian-test', 'a.txt.gz', 'us-west-2',['gzip']]) INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
 ```
 
 ### 3、功能限制
