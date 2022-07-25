@@ -50,7 +50,7 @@ LOAD DATA INFILE s3option('s3.us-west-2.amazonaws.com', ['ABCD', 'ABCD'], ['wang
 ```
 
 ### 3、功能限制
-目前此功能只支持对一个文件的读取进行load操作，对于压缩或非压缩格式文件均只支持一个文件的load操作；另外对于压缩格式的文件，目前只支持如下的集中压缩格式：
+目前此功能只支持对一个文件的读取进行load操作，对于压缩或非压缩格式文件均只支持一个文件的load操作；另外对于压缩格式的文件，目前只支持如下的压缩格式：
 |Field|Description|
 |:-:|:-:|
 |compression| S3文件的压缩格式，为空表示非压缩文件，支持的字段为""，"none"，"gzip"，"bzip2"，"flate"，"zlib"|
