@@ -36,7 +36,7 @@ LOAD DATA
 |bucket| 需要访问的桶|
 |filepath| 访问文件的相对路径 |
 |region| s3所在的区域|
-|compression| S3文件的压缩格式，为空表示非压缩文件，支持的字段为""，"none"，"gzip"，"bzip2"，"flate"，"lzw"，"zlib"|
+|compression| S3文件的压缩格式，为空表示非压缩文件，支持的字段为""，"none"，"gzip"，"bzip2"，"flate"，"zlib"|
 
 其他的字段解释可以参考 https://github.com/matrixorigin/docs/blob/main/notes/load_data_notes.txt
 
@@ -53,4 +53,4 @@ LOAD DATA INFILE s3('s3.us-west-2.amazonaws.com', ['AKIAW2D4ZBGT5LF74CXS', 'rv/7
 目前此功能只支持对一个文件的读取进行load操作，对于压缩或非压缩格式文件均只支持一个文件的load操作；另外对于压缩格式的文件，目前只支持如下的集中压缩格式：
 |Field|Description|
 |:-:|:-:|
-|compression| S3文件的压缩格式，为空表示非压缩文件，支持的字段为""，"none"，"gzip"，"bzip2"，"flate"，"lzw"，"zlib"|
+|compression| S3文件的压缩格式，为空表示非压缩文件，支持的字段为""，"none"，"gzip"，"bzip2"，"flate"，"zlib"|
