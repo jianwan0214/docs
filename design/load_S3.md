@@ -4,7 +4,28 @@
  
 ### 2、语法介绍
 ```sql
-LOAD DATA INFILE S3(endpoint, [aws_access_key_id, aws_secret_access_key],[bucket, filepath, region, [compression]]) INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+LOAD DATA
+    [LOW_PRIORITY | CONCURRENT] [LOCAL]
+    INFILE
+    S3(endpoint, [aws_access_key_id, aws_secret_access_key],[bucket, filepath, region, [compression]])
+    [REPLACE | IGNORE]
+    INTO TABLE tbl_name
+    [PARTITION (partition_name [, partition_name] ...)]
+    [CHARACTER SET charset_name]
+    [{FIELDS | COLUMNS}
+        [TERMINATED BY 'string']
+        [[OPTIONALLY] ENCLOSED BY 'char']
+        [ESCAPED BY 'char']
+    ]
+    [LINES
+        [STARTING BY 'string']
+        [TERMINATED BY 'string']
+    ]
+    [IGNORE number {LINES | ROWS}]
+    [(col_name_or_user_var
+        [, col_name_or_user_var] ...)]
+    [SET col_name={expr | DEFAULT}
+        [, col_name={expr | DEFAULT}] ...]
 ```
 其中
 |Field|Description|
@@ -16,6 +37,8 @@ LOAD DATA INFILE S3(endpoint, [aws_access_key_id, aws_secret_access_key],[bucket
 |filepath| 访问文件的相对路径 |
 |region| s3所在的区域|
 |compression| S3文件的压缩格式，为空表示非压缩文件，支持的字段为""，"none"，"gzip"，"bzip2"，"flate"，"lzw"，"zlib"|
+
+其他的字段解释可以参考 https://github.com/matrixorigin/docs/blob/main/notes/load_data_notes.txt
 
 示例：
 ```sql
