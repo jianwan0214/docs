@@ -43,10 +43,10 @@ LOAD DATA
 示例：
 ```sql
 ##非指定文件压缩格式
-LOAD DATA INFILE URL s3options {"endpoint": "s3.us-west-2.amazonaws.com", "access_key_id": "ABCD", "secret_access_key": "ABCD", "bucket": "wangjian-test", "filepath": "a.txt", "region": "us-west-2"} INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE URL s3option{"endpoint": "s3.us-west-2.amazonaws.com", "access_key_id": "ABCD", "secret_access_key": "ABCD", "bucket": "wangjian-test", "filepath": "a.txt", "region": "us-west-2"} INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
 
 ##指定文件压缩格式
-LOAD DATA INFILE URL s3options {"endpoint": "s3.us-west-2.amazonaws.com", "access_key_id": "ABCD", "secret_access_key": "ABCD", "bucket": "wangjian-test", "filepath": "a.txt.gz", "region": "us-west-2", "compression": "gzip"} INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE URL s3option{"endpoint": "s3.us-west-2.amazonaws.com", "access_key_id": "ABCD", "secret_access_key": "ABCD", "bucket": "wangjian-test", "filepath": "a.txt.gz", "region": "us-west-2", "compression": "gzip"} INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
 ```
 
 ### 3、功能限制
