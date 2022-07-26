@@ -7,7 +7,7 @@
 LOAD DATA
     [LOW_PRIORITY | CONCURRENT] [LOCAL]
     INFILE
-    URL s3options {"endpoint"="aaa", "access_key_id"="bbb", "secret_access_key"="ccc", "bucket"="ddd", "filepath"="eee", "region"="fff", "compression"= "gzip"}
+    URL s3options {"endpoint"="aaa", "access_key_id"="bbb", "secret_access_key"="ccc", "bucket"="ddd", "filepath"="eee", "region"="fff", "compression"="gzip"}
     [REPLACE | IGNORE]
     INTO TABLE tbl_name
     [PARTITION (partition_name [, partition_name] ...)]
