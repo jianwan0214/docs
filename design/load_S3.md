@@ -42,7 +42,7 @@ LOAD DATA
 
 这里要将load改写成insert into select语句，改写后的sql语句如下：
 ```sql
-insert into [<namespace>.]<table_name> FROM { internalStage | externalStage | externalLocation }
+insert into [<namespace>.]<table_name> FROM { internalStage | externalStage }
     [PARTITION (partition_name [, partition_name] ...)]
     [CHARACTER SET charset_name]
     [{FIELDS | COLUMNS}
@@ -65,17 +65,32 @@ internalStage ::=
 {"filepath"='<string>'}
 | {"filepath"='<string>', "compression"='<string>'}
 
-
+externalStage ::=
+URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>'}
+| URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>' "compression"='<string>'}
 ```
 
 
 示例：
 ```sql
+##本地文件load
+LOAD DATA INFILE 'a.txt' INTO TABLE t1 FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+##改写后语句
+insert into t1 from {"filepath"='a.txt'} FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+
 ##非指定文件压缩格式
-LOAD DATA INFILE URL s3option{"endpoint"="s3.us-west-2.amazonaws.com", "access_key_id"="ABCD", "secret_access_key"="ABCD", "bucket"="wangjian-test", "filepath"="a.txt", "region"="us-west-2"} INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>'} INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+
+##改写后语句
+insert into t1 from URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>'} FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
 
 ##指定文件压缩格式
-LOAD DATA INFILE URL s3option{"endpoint"="s3.us-west-2.amazonaws.com", "access_key_id"="ABCD", "secret_access_key"="ABCD", "bucket"="wangjian-test", "filepath"="a.txt.gz", "region"="us-west-2", "compression"="gzip"} INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>', "compression"='<string>'} INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+
+##改写后语句
+insert into t1 from URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>', "compression"='<string>'} FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
 ```
 
 ### 3、功能限制
