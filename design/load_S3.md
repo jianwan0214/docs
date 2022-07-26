@@ -7,7 +7,7 @@
 LOAD DATA
     [LOW_PRIORITY | CONCURRENT] [LOCAL]
     INFILE
-    URL s3options {"endpoint"="aaa", "access_key_id"="bbb", "secret_access_key"="ccc", "bucket"="ddd", "filepath"="eee", "region"="fff", "compression"="gzip"}
+    URL s3options {"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>', "compression"='<string>'}
     [REPLACE | IGNORE]
     INTO TABLE tbl_name
     [PARTITION (partition_name [, partition_name] ...)]
@@ -40,9 +40,32 @@ LOAD DATA
 
 其他的字段解释可以参考 https://github.com/matrixorigin/docs/blob/main/notes/load_data_notes.txt
 
-这里要将load改写成insert into select语句，因此
+这里要将load改写成insert into select语句，改写后的sql语句如下：
 ```sql
 insert into [<namespace>.]<table_name> FROM { internalStage | externalStage | externalLocation }
+    [PARTITION (partition_name [, partition_name] ...)]
+    [CHARACTER SET charset_name]
+    [{FIELDS | COLUMNS}
+        [TERMINATED BY 'string']
+        [[OPTIONALLY] ENCLOSED BY 'char']
+        [ESCAPED BY 'char']
+    ]
+    [LINES
+        [STARTING BY 'string']
+        [TERMINATED BY 'string']
+    ]
+    [IGNORE number {LINES | ROWS}]
+    [(col_name_or_user_var
+        [, col_name_or_user_var] ...)]
+    [SET col_name={expr | DEFAULT}
+        [, col_name={expr | DEFAULT}] ...]
+
+其中：
+internalStage ::= 
+{"filepath"='<string>'}
+| {"filepath"='<string>', "compression"='<string>'}
+
+
 ```
 
 
