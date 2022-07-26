@@ -7,7 +7,7 @@
 LOAD DATA
     [LOW_PRIORITY | CONCURRENT] [LOCAL]
     INFILE
-    s3option(endpoint, [aws_access_key_id, aws_secret_access_key],[bucket, filepath, region, [compression]])
+    URL s3options {"endpoint": "aaa", "access_key_id": "bbb", "secret_access_key": "ccc", "bucket": "ddd", "filepath": "eee", "region": "fff"}
     [REPLACE | IGNORE]
     INTO TABLE tbl_name
     [PARTITION (partition_name [, partition_name] ...)]
@@ -42,11 +42,7 @@ LOAD DATA
 
 示例：
 ```sql
-##非压缩文件格式
-LOAD DATA INFILE s3option('s3.us-west-2.amazonaws.com', ['ABCD', 'ABCD'], ['wangjian-test', 'a.txt', 'us-west-2']) INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
-
-##压缩文件格式
-LOAD DATA INFILE s3option('s3.us-west-2.amazonaws.com', ['ABCD', 'ABCD'], ['wangjian-test', 'a.txt.gz', 'us-west-2',['gzip']]) INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE URL s3options {"endpoint": "s3.us-west-2.amazonaws.com", "access_key_id": "ABCD", "secret_access_key": "ABCD", "bucket": "wangjian-test", "filepath": "a.txt", "region": "us-west-2"} INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
 ```
 
 ### 3、功能限制
