@@ -40,6 +40,12 @@ LOAD DATA
 
 其他的字段解释可以参考 https://github.com/matrixorigin/docs/blob/main/notes/load_data_notes.txt
 
+这里要将load改写成insert into select语句，因此
+```sql
+insert into [<namespace>.]<table_name> FROM { internalStage | externalStage | externalLocation }
+```
+
+
 示例：
 ```sql
 ##非指定文件压缩格式
