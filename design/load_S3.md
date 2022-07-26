@@ -7,7 +7,7 @@
 LOAD DATA
     [LOW_PRIORITY | CONCURRENT] [LOCAL]
     INFILE
-    URL s3options {"endpoint": "aaa", "access_key_id": "bbb", "secret_access_key": "ccc", "bucket": "ddd", "filepath": "eee", "region": "fff"}
+    URL s3options {"endpoint": "aaa", "access_key_id": "bbb", "secret_access_key": "ccc", "bucket": "ddd", "filepath": "eee", "region": "fff", "compression": "gzip"}
     [REPLACE | IGNORE]
     INTO TABLE tbl_name
     [PARTITION (partition_name [, partition_name] ...)]
@@ -31,8 +31,8 @@ LOAD DATA
 |Field|Description|
 |:-:|:-:|
 |endpoint|终端节点是作为 AWS Web 服务的入口点的 URL。例如：s3.us-west-2.amazonaws.com|
-|aws_access_key_id| S3的Access key ID|
-|aws_secret_access_key| S3的Secret access key|
+|access_key_id| S3的Access key ID|
+|secret_access_key| S3的Secret access key|
 |bucket| 需要访问的桶|
 |filepath| 访问文件的相对路径 |
 |region| s3所在的区域|
