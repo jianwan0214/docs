@@ -58,7 +58,7 @@ select * from t;
 |  6 |    6 |
 +----+------+
 
-INSERT INTO t(c) VALUES (7);
+insert into t(c) values(7);
 select * from t;
 +----+------+
 | id | c    |
@@ -90,7 +90,34 @@ insert into t(c) values (6);
 ERROR 1690 (22003): constant 2147483648 overflows int
 ```
 
-## 使用限制
+## 3、实现原理
+  首先在catalog上建立一张自增列的表，表名称为mo_increment_columns，表定义为
+```sql
+show columns from mo_increment_columns;
++-------+---------+------+------+---------+---------+
+| Field | Type    | Null | Key  | Default | Comment |
++-------+---------+------+------+---------+---------+
+| name  | VARCHAR | YES  |      | NULL    |         |
+| num   | BIGINT  | YES  |      | NULL    |         |
++-------+---------+------+------+---------+---------+
+```
+name列为dbname_tablename_colname， num列为该自增列所对应的当前最大值。
+
+当有自增列的表建立时，就会在mo_increment_columns表中插入一条记录，name列为dbname + "\_" + tablename + "\_" + colname， num值默认设置为0。  
+当对有自增列的表进行插入操作时，在访问mo_increment_columns表获取num值时，需要启动一个事务去访问，来获取num值，当获取失败时，需要进行重试，直到获取num值成功。
+### 3.1、insert语句中自增列没有值
+ 此时需要访问mo_increment_columns去获取num值，并且将mo_increment_columns表中的num+1，update到mo_increment_columns表中去，然后将取出的num+1设置到insert语句中去，进行后续的insert操作。
+### 3.2、insert语句中自增列有特定值
+  此时需要去设置mo_increment_columns的num值，启动一个事务去update num的值。当特定值小于该num值时，mo_increment_columns中的num不予更新。
+### 3.3、支持批量的insert语句
+   此时需要访问mo_increment_columns去获取num值，并且将mo_increment_columns表中的num+n，update到mo_increment_columns表中去，然后将取出的num+i设置到insert语句中去，进行后续的insert操作。
+### 3.4、update自增列时需要更新num值
+  当使用update语句更新自增列的值时，需要启动一个事务去update num的值，当更新的自增列的最大值大于mo_increment_columns的num值时，需要将num值进行更新，否则不需要更新。
+
+注意：
+当删除了有自增列表中的数据时，不会对mo_increment_columns的num值有影响，只有在insert和update操作后，才有可能影响mo_increment_columns中的num值。
+
+## 4、使用限制
 \* 一张表中只允许定义一列自增列。  
 \* 定义的列必须为主键或者索引的首列。  
 \* 只能定义在类型为int32、int64的列上。  
