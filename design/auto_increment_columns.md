@@ -89,3 +89,8 @@ select * from t;
 insert into t(c) values (6);
 ERROR 1690 (22003): constant 2147483648 overflows int
 ```
+
+## 使用限制
+一张表中只允许定义一列自增列。  
+定义的列必须为主键或者索引的首列。  
+只能定义在类型为int32、int64的列上。  
