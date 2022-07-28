@@ -91,7 +91,7 @@ ERROR 1690 (22003): constant 2147483648 overflows int
 ```
 
 ## 3、实现原理
-  首先在catalog上建立一张自增列的表，表名称为mo_increment_columns，表定义为
+  首先在catalog上建立一张自增列的表，表名称为mo_increment_columns，每一行对应一个自增列，表定义为
 ```sql
 show columns from mo_increment_columns;
 +-------+---------+------+------+---------+---------+
@@ -101,7 +101,7 @@ show columns from mo_increment_columns;
 | num   | BIGINT  | YES  |      | NULL    |         |
 +-------+---------+------+------+---------+---------+
 ```
-name列为dbname_tablename_colname， num列为该自增列所对应的当前最大值。
+name列为dbname_tablename_colname， num列为该自增列所对应的当前最大值，初始化值为0。
 
 当有自增列的表建立时，就会在mo_increment_columns表中插入一条记录，name列为dbname + "\_" + tablename + "\_" + colname， num值默认设置为0。  
 当对有自增列的表进行插入操作时，在访问mo_increment_columns表获取num值时，需要启动一个事务去访问，来获取num值，当获取失败时，需要进行重试，直到获取num值成功。
