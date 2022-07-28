@@ -21,7 +21,7 @@ ERROR 1075 (42000): Incorrect table definition; there can be only one auto colum
 ### 2、自增列的功能
 当insert语句没有给自增列指定值，或者指定的值为null时，系统就会为该列分配一个值，值为该列目前的最大值+1。
 ```sql
-create t(id int primary key auto_increment, c int);
+create table t(id int primary key auto_increment, c int);
 insert into t(c) values (3), (4), (5);
 select * from t;
 +----+------+
@@ -32,11 +32,20 @@ select * from t;
 |  3 |    5 |
 +----+------+
 
-insert into t2 values(null,1);
-ERROR 1690 (22003): constant 2147483648 overflows int
+insert into t values(null,1);
+select * from t;
++----+------+
+| id | c    |
++----+------+
+|  1 |    3 |
+|  2 |    4 |
+|  3 |    5 |
+|  4 |    1 |
++----+------+
+4 rows in set (0.00 sec)
 ```
 
-此外，auto_increment 还支持显式指定列值的插入语句，此时mo会保存显式指定的值：
+此外，auto_increment还支持显式指定列值的插入语句，此时mo会保存显式指定的值：
 ```sql
 insert into t values(6, 6);
 select * from t;
