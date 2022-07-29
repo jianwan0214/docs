@@ -116,6 +116,7 @@ name列为dbname_tablename_colname， num列为该自增列所对应的当前最
 
 注意：
 当删除了有自增列表中的数据时，不会对mo_increment_columns的num值有影响，只有在insert和update操作后，才有可能影响mo_increment_columns中的num值。
+自增列只能保证自增列的单调性，不保证严格的递增性。例如同时插入两条语句时，当先获取自增列的insert语句失败时，并不会对mo_increment_columns表中num值进行回滚，下一条insert语句会接着num值进行增加操作。
 
 ## 4、使用限制
 \* 一张表中只允许定义一列自增列。  
