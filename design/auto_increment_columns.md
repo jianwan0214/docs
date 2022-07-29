@@ -1,7 +1,7 @@
 ## 自增列功能说明
 
 ### 1、基本概念
-自增列（auto_increment）是用于自动填充缺省列值的列属性。当 INSERT 语句没有指定 auto_increment 列的具体值时，系统会自动地为该列分配一个值。目前mo只支持对int32，int64类型的列为自增列，一张表中不允许设置两个及以上自增列，，其sql语法如下：
+自增列（auto_increment）是用于自动填充缺省列值的列属性。当 INSERT 语句没有指定 auto_increment 列的具体值时，系统会自动地为该列分配一个值。目前mo只支持对int32，int64类型的列为自增列，一张表中允许设置两个及以上自增列，，其sql语法如下：
 ```sql
 ## 设置int32类型的自增列
 create table t(a int primary key auto_increment);
@@ -110,7 +110,7 @@ name列为dbname_tablename_colname， num列为该自增列所对应的当前最
 
 注意：
 当删除了有自增列表中的数据时，不会对mo_increment_columns的num值有影响，只有在insert和update操作后，才有可能影响mo_increment_columns中的num值。
-自增列只能保证自增列的单调性，不保证严格的递增性。例如同时插入两条语句时，当先获取自增列的insert语句失败时，并不会对mo_increment_columns表中num值进行回滚，下一条insert语句会接着num值进行增加操作。
+自增列只能保证自增列的单调性，不保证严格的递增性。例如同时插入两条语句时，当先获取自增列的insert语句失败时，并不会对mo_increment_columns表中num值进行回滚，下一条insert语句会接着当前的num值进行自增操作。
 
 ## 4、使用限制
 \* 只能定义在类型为int32、int64的列上。  
