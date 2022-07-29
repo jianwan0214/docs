@@ -1,7 +1,7 @@
 ## 自增列功能说明
 
 ### 1、基本概念
-自增列（auto_increment）是用于自动填充缺省列值的列属性。当 INSERT 语句没有指定 auto_increment 列的具体值时，系统会自动地为该列分配一个值。目前mo只支持对int32，int64类型的列为自增列，一张表中允许设置两个及以上自增列，，其sql语法如下：
+自增列（auto_increment）是用于自动填充缺省列值的列属性。当 INSERT 语句没有指定 auto_increment 列的具体值时，系统会自动地为该列分配一个值。目前mo只支持对int32，int64类型的列为自增列，一张表中允许设置两个及以上自增列，其sql语法如下：
 ```sql
 ## 设置int32类型的自增列
 create table t(a int primary key auto_increment);
@@ -9,6 +9,7 @@ create table t(a int primary key auto_increment);
 ## 设置int64类型的自增列
 create table t(a int64 primary key auto_increment);
 
+## 设置两列以上的自增列
 create table t(a int64 primary key auto_increment, b int64 auto_increment);
 ```
 
