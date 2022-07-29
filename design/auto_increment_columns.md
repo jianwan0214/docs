@@ -110,7 +110,7 @@ name列为dbname_tablename_colname， num列为该自增列所对应的当前最
   当使用update语句更新自增列的值时，需要启动一个事务去update num的值，当更新的自增列的最大值大于mo_increment_columns的num值时，需要将num值进行更新，否则不需要更新。
 
 注意：
-当删除了有自增列表中的数据时，不会对mo_increment_columns的num值有影响，只有在insert和update操作后，才有可能影响mo_increment_columns中的num值。
+当删除了有自增列表中的数据时，不会对mo_increment_columns的num值有影响，只有在insert和update操作后，才有可能影响mo_increment_columns中的num值。  
 自增列只能保证自增列的单调性，不保证严格的递增性。例如同时插入两条语句时，当先获取自增列的insert语句失败时，并不会对mo_increment_columns表中num值进行回滚，下一条insert语句会接着当前的num值进行自增操作。
 
 ## 4、使用限制
