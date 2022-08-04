@@ -73,13 +73,13 @@ URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_k
 
 示例：
 ```sql
-##本地文件load
+## 本地文件load
 LOAD DATA INFILE 'a.txt' INTO TABLE t1 FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
 
-##非指定文件压缩格式
+## 非指定文件压缩格式
 LOAD DATA INFILE URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>'} INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
 
-##指定文件压缩格式
+## 指定文件压缩格式
 LOAD DATA INFILE URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>', "compression"='<string>'} INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
 
 ```
@@ -91,4 +91,23 @@ LOAD DATA INFILE URL s3option{"endpoint"='<string>', "access_key_id"='<string>',
 |compression| S3文件的压缩格式，为空表示非压缩文件，支持的字段为"none"，"gzip"，"bzip2"，"flate"，"zlib"|
 
 ### 4、外表
-这里需要将load操作转换成insert into t1 select * from t2的形式，其中t2就是外表，这里介绍一下外表的概念。
+这里需要将load操作转换成insert into t1 select * from t2的形式，其中t2就是外表，t1是要插入的表，一般为普通表，这里介绍一下外表的概念。这里暂时还不支持往外表中插入数据。
+外表语句语法：
+```sql
+## 创建指向本地文件的外表（指定压缩格式）
+create external table t(...) localfile{"filepath"='<string>', "compression"='<string>'} FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+
+## 创建指向本地文件的外表（不指定压缩格式，则为auto格式，自动检查文件的格式）
+create external table t(...) localfile{"filepath"='<string>'} FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+
+
+## 创建指向S3文件的外表（指定压缩格式）
+create external table t(...) URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>', "compression"='<string>'} FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+
+## 创建指向S3文件的外表（不指定压缩格式，则为auto格式，自动检查文件的格式）
+create external table t(...) URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>'} FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
+
+
+```
+
+
