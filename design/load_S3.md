@@ -76,7 +76,6 @@ URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_k
 ##本地文件load
 LOAD DATA INFILE 'a.txt' INTO TABLE t1 FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
 
-
 ##非指定文件压缩格式
 LOAD DATA INFILE URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>'} INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
 
@@ -90,3 +89,6 @@ LOAD DATA INFILE URL s3option{"endpoint"='<string>', "access_key_id"='<string>',
 |Field|Description|
 |:-:|:-:|
 |compression| S3文件的压缩格式，为空表示非压缩文件，支持的字段为"none"，"gzip"，"bzip2"，"flate"，"zlib"|
+
+### 4、外表
+这里需要将load操作转换成insert into t1 select * from t2的形式，其中t2就是外表，这里介绍一下外表的概念。
