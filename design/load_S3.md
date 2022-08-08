@@ -106,8 +106,10 @@ create external table t(...) URL s3option{"endpoint"='<string>', "access_key_id"
 
 ## 创建指向S3文件的外表（不指定压缩格式，则为auto格式，自动检查文件的格式）
 create external table t(...) URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>'} FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
-
-
 ```
+
+其中，外表目前只支持进行select操作，其余的delete，insert, update目前来说，应该均不予支持。select的操作与目前普通表的操作相同，支持where, limit等条件操作。
+
+
 
 
