@@ -109,6 +109,16 @@ create external table t(...) URL s3option{"endpoint"='<string>', "access_key_id"
 ```
 
 其中，外表目前只支持进行select操作，其余的delete，insert, update目前来说，应该均不予支持。select的操作与目前普通表的操作相同，支持where, limit等条件操作。
+在创建了指向文件的外表后，在往现有普通表中导入数据时，也可以采取如下的操作
+```sql
+## t1为普通表，t为外表
+insert into t1 select * from t;
+
+## 也可以选取文件中某一列
+insert into t1 select a from t;
+```
+
+
 
 
 
