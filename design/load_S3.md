@@ -118,8 +118,13 @@ insert into t1 select * from t;
 insert into t1 select a from t;
 ```
 
+外表在catalog中的存储形式：
+mo_tables表：
 
+|relname|reldatabase|relpersistence|relkind|rel_comment|rel_createsql|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|t|ssb|p|e|| {"Fields":null,"Lines":null,"IgnoredLines":0,"ColumnList":null,"Assignments":null,"Filepath":"/Users/wangjian/test/a.txt","Config":{"Endpoint":"","Bucket":"","KeyPrefix":""},"LoadType":0,"CompressType":"auto","S3options":null}|
 
-
+对于外表，relkind设置为"e"，此类型表示该表为外部表，rel_createsql字段中以字符串形式存放与外表相关的一些参数，以用于后续的读取文件。
 
 
