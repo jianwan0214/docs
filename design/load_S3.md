@@ -37,7 +37,8 @@ LOAD DATA
 |bucket| 需要访问的桶|
 |filepath| 访问文件的相对路径 |
 |region| s3所在的区域|
-|compression| S3文件的压缩格式，为空表示非压缩文件，支持的字段为"none"，"gzip"，"bzip2"，"flate"，"zlib"|
+|compression| S3文件的压缩格式，为空表示非压缩文件，支持的字段为"auto", "none", "gzip", "bzip2", "flate", "zlib", "lz4"|
+对于压缩格式，"auto"表示通过文件后缀名自动检查文件的压缩格式，"none"表示为非压缩格式，其余表示文件的压缩格式。
 
 其他的字段解释可以参考 https://github.com/matrixorigin/docs/blob/main/notes/load_data_notes.txt
 
@@ -77,8 +78,14 @@ URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_k
 ## 本地文件load
 LOAD DATA INFILE 'a.txt' INTO TABLE t1 FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
 
+## 本地多个文件load
+LOAD DATA INFILE '/Users/*.txt' INTO TABLE t1 FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
 ## 本地文件指定压缩格式load
 LOAD DATA INFILE {'filepath'='a.txt',"commpression"="none"} INTO TABLE t1 FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+## 本地文件自动检查压缩格式load
+LOAD DATA INFILE {'filepath'='a.txt',"commpression"="auto"} INTO TABLE t1 FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
 
 ## 非指定文件压缩格式
 LOAD DATA INFILE URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>'} INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
@@ -89,10 +96,10 @@ LOAD DATA INFILE URL s3option{"endpoint"='<string>', "access_key_id"='<string>',
 ```
 
 ### 3、功能限制
-目前此功能只支持对一个文件的读取进行load操作，对于压缩或非压缩格式文件均只支持一个文件的load操作；另外对于压缩格式的文件，目前只支持如下的压缩格式：
+对于压缩格式的文件，目前只支持如下的压缩格式：
 |Field|Description|
 |:-:|:-:|
-|compression| S3文件的压缩格式，为空表示非压缩文件，支持的字段为"none"，"gzip"，"bzip2"，"flate"，"zlib"|
+|compression| S3文件的压缩格式，为空表示非压缩文件，支持的字段为"auto", "none"，"gzip"，"bzip2"，"flate"，"zlib", "lz4"|
 
 ### 4、外表
 这里需要将load操作转换成insert into t1 select * from t2的形式，其中t2就是外表，t1是要插入的表，一般为普通表，这里介绍一下外表的概念。这里暂时还不支持往外表中插入数据。
@@ -112,7 +119,7 @@ create external table t(...) URL s3option{"endpoint"='<string>', "access_key_id"
 create external table t(...) URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>'} FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
 ```
 
-其中，外表目前只支持进行select操作，其余的delete，insert, update目前来说，应该均不予支持。select的操作与目前普通表的操作相同，支持where, limit等条件操作。
+其中，外表目前只支持进行select操作，其余的delete，insert, update目前来说，都不予支持。select的操作与目前普通表的操作相同，支持where, limit等条件操作。
 在创建了指向文件的外表后，在往现有普通表中导入数据时，也可以采取如下的操作
 ```sql
 ## t1为普通表，t为外表
