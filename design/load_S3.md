@@ -1,13 +1,14 @@
 ## load from S3 功能说明
 ### 1、功能简介
- 此功能即实现从S3中读取文件，实现load数据到本地数据库表中的功能。目前的S3支持AWS，以及国内的主流云厂商，此外S3上的文件支持压缩格式，不过目前只支持对S3上一个文件的读取进行load，不支持多个文件的读取。
+ 此功能即实现从S3中读取文件，实现load数据到本地数据库表中的功能。目前的S3支持AWS，以及国内的主流云厂商，此外S3上的文件支持压缩格式，此外还支持文件路径的正则表达式规则，来读取多个文件，例如"/Users/*.txt"就会去读取
  
 ### 2、语法介绍
 ```sql
 LOAD DATA
     [LOW_PRIORITY | CONCURRENT] [LOCAL]
-    INFILE
-    URL s3options {"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>', "compression"='<string>'}
+    [ INFILE 'string'
+    | INFILE {"filepath"='<string>', "compression"='<string>'}
+    | URL s3options {"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>', "compression"='<string>'}
     [REPLACE | IGNORE]
     INTO TABLE tbl_name
     [PARTITION (partition_name [, partition_name] ...)]
@@ -40,7 +41,7 @@ LOAD DATA
 
 其他的字段解释可以参考 https://github.com/matrixorigin/docs/blob/main/notes/load_data_notes.txt
 
-这里要将load改写成insert into select plan，改写后的sql语句如下：
+这里的执行会将load改写成insert into select plan进行执行，但对于客户端不感知，改写后的逻辑和如下sql语句相同：
 ```sql
 insert into [<namespace>.]<table_name> FROM { internalStage | externalStage }
     [PARTITION (partition_name [, partition_name] ...)]
