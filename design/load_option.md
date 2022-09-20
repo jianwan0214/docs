@@ -14,3 +14,5 @@ abc",abc
 
 ### 3、结束符说明
 通过LINES TERMINATED BY 'char'来设置，即为一行的结束符号，常见的有'\n', '\r\n'
+
+xxx
