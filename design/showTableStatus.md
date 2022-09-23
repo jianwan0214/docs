@@ -22,11 +22,11 @@ mysql> show table status;
 其中MO所能支持的结果如下表给出：
 |展示列|MySQL支持|MO支持|
 |:-:|:-:|:-:|
-| Name |  是  |    |
-| Engine |  是  |    |
-| Version |  是  |    |
+|     Name   |  是  |    |
+|   Engine   |  是  |    |
+|    Version |  是  |    |
 | Row_format |  是  |    |
-| Rows |  是  |    |
+|    Rows    |  是  |    |
 | Avg_row_length |  是  |    |
 | Data_length |  是  |    |
 | Max_data_length |  是  |    |
