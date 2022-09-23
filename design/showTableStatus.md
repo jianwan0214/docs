@@ -20,23 +20,23 @@ mysql> show table status;
 上面展示了mysql中的结果，其中每个字段的含义可以参考mysql的文档：https://dev.mysql.com/doc/refman/8.0/en/show-table-status.html
 
 其中MO所能支持的结果如下表给出：
-|展示列|MySQL支持|MO支持|
+|       展示列     | MySQL支持 | MO是否支持 |
 |:-:|:-:|:-:|
-|        Name    |  是  |    |
-|      Engine    |  是  |    |
-|      Version   |  是  |    |
-|    Row_format  |  是  |    |
-|       Rows     |  是  |    |
-| Avg_row_length |  是  |    |
-| Data_length |  是  |    |
-| Max_data_length |  是  |    |
-| Index_length |  是  |    |
-| Data_free |  是  |    |
-| Auto_increment |  是  |    |
-| Create_time |  是  |    |
-| Update_time |  是  |    |
-| Check_time |  是  |    |
-| Collation |  是  |    |
-| Checksum |  是  |    |
-| Create_options |  是  |    |
-| Comment |  是  |    |
+|         Name    |     是    |           |
+|       Engine    |     是    |           |
+|       Version   |     是    |           |
+|    R ow_format  |     是    |           |
+|        Rows     |     是    |           |
+|  Avg_row_length |     是    |           |
+|   Data_length   |     是    |           |
+| Max_data_length |     是    |           |
+|   Index_length  |     是    |           |
+|    Data_free    |     是    |           |
+|  Auto_increment |     是    |           |
+|   Create_time   |     是    |           |
+|   Update_time   |     是    |           |
+|   Check_time    |     是    |           |
+|    Collation    |     是    |           |
+|    Checksum     |     是    |           |
+|  Create_options |     是    |           |
+|     Comment     |     是    |           |
