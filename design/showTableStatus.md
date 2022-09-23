@@ -26,6 +26,7 @@ mysql> show table status;
 | Engine |  是  |    |
 | Version |  是  |    |
 | Row_format |  是  |    |
+| Rows |  是  |    |
 | Avg_row_length |  是  |    |
 | Data_length |  是  |    |
 | Max_data_length |  是  |    |
