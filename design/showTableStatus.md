@@ -22,7 +22,7 @@ mysql> show table status;
 其中MO所能支持的结果如下表给出：
 |       展示列     | MySQL支持 | MO是否支持 |
 |       :-:       |    :-:   |    :-:    |
-|       Name      |     是    |     是    |
+|       Name      |     是    |     $\color{#FF0000}{红}$ 是    |
 |      Engine     |     是    |     否    |
 |      Version    |     是    |     否    |
 |    Row_format   |     是    |     否    |
