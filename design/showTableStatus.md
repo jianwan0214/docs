@@ -21,22 +21,22 @@ mysql> show table status;
 
 其中MO所能支持的结果如下表给出：
 |       展示列     | MySQL支持 | MO是否支持 |
-|:-:|:-:|:-:|
-|         Name    |     是    |           |
-|       Engine    |     是    |           |
-|       Version   |     是    |           |
-|    R ow_format  |     是    |           |
-|        Rows     |     是    |           |
-|  Avg_row_length |     是    |           |
-|   Data_length   |     是    |           |
-| Max_data_length |     是    |           |
-|   Index_length  |     是    |           |
-|    Data_free    |     是    |           |
-|  Auto_increment |     是    |           |
-|   Create_time   |     是    |           |
-|   Update_time   |     是    |           |
-|   Check_time    |     是    |           |
-|    Collation    |     是    |           |
-|    Checksum     |     是    |           |
-|  Create_options |     是    |           |
-|     Comment     |     是    |           |
+|       :-:       |    :-:   |    :-:    |
+|       Name      |     是    |     是    |
+|      Engine     |     是    |     否    |
+|      Version    |     是    |     否    |
+|    Row_format   |     是    |     否    |
+|       Rows      |     是    |     否    |
+|  Avg_row_length |     是    |     否    |
+|   Data_length   |     是    |     否    |
+| Max_data_length |     是    |     否    |
+|   Index_length  |     是    |     否    |
+|    Data_free    |     是    |     否    |
+|  Auto_increment |     是    |     是    |
+|   Create_time   |     是    |     是    |
+|   Update_time   |     是    |     否    |
+|   Check_time    |     是    |     否    |
+|    Collation    |     是    |     否    |
+|    Checksum     |     是    |     否    |
+|  Create_options |     是    |     否    |
+|     Comment     |     是    |     是    |
