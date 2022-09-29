@@ -8,4 +8,5 @@
 其中在本人的电脑上，耗时为
 
 
-https://github.com/jianwan0214/docs/blob/main/design/performance/profile012.png
+
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/profile012.png)
