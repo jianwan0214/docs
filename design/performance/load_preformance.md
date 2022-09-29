@@ -77,3 +77,13 @@ DefaultTxnCacheSize = common.UNLIMIT (UINT64_MAX) 时的 insert into t2 select *
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_insert_4G.png)
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem_4G.png)
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem_graph_4G.png)
+
+5G数据的load相关指标如下：
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_load_5G.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/load_mem_5G.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/load_mem_graph_5G.png)
+
+5G数据的 insert into t2 select * from t1 相关指标如下：
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_insert_5G.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem_5G.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem_graph_5G.png)
