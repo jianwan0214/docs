@@ -11,3 +11,6 @@
 
 ### 2、对于1G以上数据的性能分析
 对于load操作是改写成insert into t1 select * from t2; 因此在这里也将select普通表放入进行对比。
+首先是对于1G的数据，首先来对比设置DefaultTxnCacheSize大小后带来的性能改善：
+||||
+|:|
