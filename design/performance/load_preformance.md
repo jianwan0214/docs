@@ -12,12 +12,17 @@
 ### 2、对于1G以上数据的性能分析
 对于load操作是改写成insert into t1 select * from t2; 因此在这里也将select普通表放入进行对比。
 首先是对于1G的数据，首先来对比设置 DefaultTxnCacheSize 大小后带来的性能改善：
-|DefaultTxnCacheSize| insert into t2 select from t1(普通表) | insert into t1 select from t(外表)(load) | load事务提交耗时 | 
+|DefaultTxnCacheSize| insert into t2 select from t1(普通表) | insert into t1 select from t(外表)(load) | load事务提交耗时 |
 |:-:|:-:|:-:| :-:|
-| 256 M | | 28.16 sec| 10 sec |
+| 256 M | 29.29 sec | 28.16 sec| 10 sec |
 ||
 
 其中 DefaultTxnCacheSize = 256 M 时的load相关指标如下：
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_load_1G.png)
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/load_mem.png)
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/load_mem_graph.png)
+
+DefaultTxnCacheSize = 256 M 时的 insert into t2 select * from t1 相关指标如下：
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_insert_1G.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem_graph.png)
