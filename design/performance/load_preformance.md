@@ -59,7 +59,7 @@ DefaultTxnCacheSize = common.UNLIMIT (UINT64_MAX) 时的 insert into t2 select *
 3G数据的load相关指标如下：
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_load_3G.png)
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/load_mem_3G.png)
-![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/load_mem_graph_3G.png.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/load_mem_graph_3G.png)
 
 3G数据的 insert into t2 select * from t1 相关指标如下：
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_insert_3G.png)
