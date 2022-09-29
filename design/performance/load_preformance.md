@@ -4,5 +4,5 @@
 ```sql
   select * from t into outfile 'a.txt' max_file_size 1048576; // 文件最大值单位为KB
 ```
-生成的50多个文件名称为，a.txt, ..., a.txt.49。 其中在本人的电脑上，耗时为
+生成的50多个文件名称为，a.txt, ..., a.txt.49。 其中在本人的电脑上，耗时为13min。（本人电脑内存为16G，芯片为Apple M1 Pro, 主频3.35 GHz）。
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/export.png)
