@@ -44,7 +44,9 @@ DefaultTxnCacheSize = common.UNLIMIT (UINT64_MAX) 时的 insert into t2 select *
 | 1 G | 10.30 sec | 16.95 sec | 8 sec |
 | 2 G | 37.28 sec | 35.10 sec | 17 sec |
 | 3 G | 58.25 sec | 1 min 3.68 sec | 35 sec |
-
+| 4 G | 1 min 46.19 sec | 1 min 48.65 sec | 68 sec |
+| 5 G | 4 min 36.75 sec | 2 min 55.56 sec | 107 sec |
+（5G时insert into t2 select * from t1 事务提交耗时 3min）
 
 2G数据的load相关指标如下：
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_load_2G.png)
@@ -65,3 +67,13 @@ DefaultTxnCacheSize = common.UNLIMIT (UINT64_MAX) 时的 insert into t2 select *
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_insert_3G.png)
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem_3G.png)
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem_graph_3G.png)
+
+4G数据的load相关指标如下：
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_load_4G.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/load_mem_4G.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/load_mem_graph_4G.png)
+
+4G数据的 insert into t2 select * from t1 相关指标如下：
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_insert_4G.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem_4G.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem_graph_4G.png)
