@@ -15,7 +15,7 @@
 |DefaultTxnCacheSize| insert into t2 select from t1(普通表) | insert into t1 select from t(外表)(load) | load事务提交耗时 |
 |:-:|:-:|:-:| :-:|
 | 256 M | 29.29 sec | 28.16 sec| 10 sec |
-||
+| common.UNLIMIT | 10.30 sec | 16.95 sec | 8 sec |
 
 其中 DefaultTxnCacheSize = 256 M 时的load相关指标如下：
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_load_1G.png)
@@ -23,6 +23,17 @@
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/load_mem_graph.png)
 
 DefaultTxnCacheSize = 256 M 时的 insert into t2 select * from t1 相关指标如下：
-![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_insert_1G.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_load_1G_fullMem.png)
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem.png)
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem_graph.png)
+
+
+其中 DefaultTxnCacheSize = common.UNLIMIT (UINT64_MAX) 时的load相关指标如下：
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_load_1G_fullMem.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/load_mem_fullMem.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/load_mem_graph_fullMem.png)
+
+DefaultTxnCacheSize = common.UNLIMIT (UINT64_MAX) 时的 insert into t2 select * from t1 相关指标如下：
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_insert_1G_fullMem.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem_fullMem.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem_graph_fullMem.png.png)
