@@ -7,3 +7,5 @@
 生成的50多个文件名称为，a.txt, ..., a.txt.49。
 其中在本人的电脑上，耗时为
 
+
+https://github.com/jianwan0214/docs/blob/main/design/performance/profile012.png
