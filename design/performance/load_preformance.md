@@ -8,4 +8,4 @@
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/export.png)
 
 ### 2、对于1G以上数据的性能分析
-
+对于load操作是改写成insert into t1 select * from t2; 因此在这里也将select普通表放入进行对比。
