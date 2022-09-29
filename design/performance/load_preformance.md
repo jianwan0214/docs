@@ -87,3 +87,8 @@ DefaultTxnCacheSize = common.UNLIMIT (UINT64_MAX) 时的 insert into t2 select *
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/explain_insert_5G.png)
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem_5G.png)
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/performance/insert_mem_graph_5G.png)
+
+初步结论:
+目前影响load性能的两个关键点为：
+1、事务机制下insert不支持并发操作
+2、大规模数据的事务提交非常耗时。
