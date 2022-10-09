@@ -56,7 +56,6 @@ DefaultTxnCacheSize = common.UNLIMIT (UINT64_MAX) 时的 insert into t2 select *
 | 3 G | 32.26 sec | 1 min 3.68 sec | 35 sec |
 | 4 G | 41.14 sec | 1 min 48.65 sec | 68 sec |
 | 5 G | 1 min 4.04 sec | 2 min 55.56 sec | 107 sec |
-（5G时insert into t2 select * from t1 事务提交耗时 3min）
 
 初步结论：  
 目前影响load性能的两个关键点为：  
