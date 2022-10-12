@@ -60,11 +60,11 @@ DefaultTxnCacheSize = common.UNLIMIT (UINT64_MAX) 时的 insert into t2 select *
 load(分批commit) batch
 |FileSize| 2w | 4w | 6w | 8w | 10w |
 |:-:|:-:|:-:| :-:|:-:| :-:|
-| 1 G | 10.26 ses | 9.39 sec | 9.64 sec | 11.10 sec | 12.09 sec |
-| 2 G | 10.26 ses | 9.39 sec | 9.64 sec | 11.10 sec | 12.09 sec |
-| 3 G | 10.26 ses | 9.39 sec | 9.64 sec | 11.10 sec | 12.09 sec |
-| 4 G | 10.26 ses | 9.39 sec | 9.64 sec | 11.10 sec | 12.09 sec |
-| 5 G | 10.26 ses | 9.39 sec | 9.64 sec | 11.10 sec | 12.09 sec |
+| 1 G | 8.95 ses | 9.10 sec | 9.07 sec | 8.97 sec | 9.12 sec |
+| 2 G | 17.75 ses | 18.02 sec | 17.98 sec | 18.78 sec | 18.79 sec |
+| 3 G | 28.26 ses | 28.33 sec | 29.03 sec | 28.35 sec | 28.42 sec |
+| 4 G | 40.03 ses | 40.06 sec | 39.70 sec | 41.64 sec | 41.52 sec |
+| 5 G | 51.59 ses | 53.13 sec | 53.71 sec | 51.88 sec | 53.80 sec |
 
 
 初步结论：  
