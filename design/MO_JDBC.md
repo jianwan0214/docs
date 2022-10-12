@@ -109,6 +109,7 @@
 | getResultSetHoldability() | 暂不支持 | 不支持 |
 | isClosed() | 暂不支持 | 不支持 |
 | etPoolable(boolean poolable) | 暂不支持 | 不支持 |
+| setPoolable(boolean poolable) | 暂不支持 | 不支持 |
 | isPoolable() | 暂不支持 | 不支持 |
 | closeOnCompletion() | 暂不支持 | 不支持 |
 | isCloseOnCompletion() | 暂不支持 | 不支持 |
