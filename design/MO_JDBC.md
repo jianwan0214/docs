@@ -79,7 +79,6 @@
 | setEscapeProcessing() | 暂不支持 | 不支持 |
 | getQueryTimeout() | 暂不支持 | 不支持 |
 | setQueryTimeout(int seconds) | 暂不支持 | 不支持 |
-| setQueryTimeout(int seconds) | 暂不支持 | 不支持 |
 | cancel() | 暂不支持 | 不支持 |
 | getWarnings() | 暂不支持 | 不支持 |
 | clearWarnings() | 暂不支持 | 不支持 |
@@ -108,7 +107,6 @@
 | execute(String sql, String columnNames[]) | 暂不支持 | 不支持 |
 | getResultSetHoldability() | 暂不支持 | 不支持 |
 | isClosed() | 暂不支持 | 不支持 |
-| etPoolable(boolean poolable) | 暂不支持 | 不支持 |
 | setPoolable(boolean poolable) | 暂不支持 | 不支持 |
 | isPoolable() | 暂不支持 | 不支持 |
 | closeOnCompletion() | 暂不支持 | 不支持 |
