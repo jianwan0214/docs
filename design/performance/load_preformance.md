@@ -57,6 +57,16 @@ DefaultTxnCacheSize = common.UNLIMIT (UINT64_MAX) 时的 insert into t2 select *
 | 4 G | 41.14 sec | 1 min 48.65 sec | 68 sec |
 | 5 G | 1 min 4.04 sec | 2 min 55.56 sec | 107 sec |
 
+load(分批commit) batch
+|FileSize| 2w | 4w | 6w | 8w | 10w |
+|:-:|:-:|:-:| :-:|:-:| :-:|
+| 1 G | 10.26 ses | 9.39 sec | 9.64 sec | 11.10 sec | 12.09 sec |
+| 2 G | 10.26 ses | 9.39 sec | 9.64 sec | 11.10 sec | 12.09 sec |
+| 3 G | 10.26 ses | 9.39 sec | 9.64 sec | 11.10 sec | 12.09 sec |
+| 4 G | 10.26 ses | 9.39 sec | 9.64 sec | 11.10 sec | 12.09 sec |
+| 5 G | 10.26 ses | 9.39 sec | 9.64 sec | 11.10 sec | 12.09 sec |
+
+
 初步结论：  
 目前影响load性能的两个关键点为：  
 1、事务机制下insert不支持并发操作  
