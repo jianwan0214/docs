@@ -111,3 +111,8 @@
 | isPoolable() | 暂不支持 | 不支持 |
 | closeOnCompletion() | 暂不支持 | 不支持 |
 | isCloseOnCompletion() | 暂不支持 | 不支持 |
+
+### 2、ResultSet interface中的方法
+|ResultSet类中的方法|MO目前支持情况|0.6 MO是否支持|
+|:-:|:-:|:-:|
+| executeQuery(String sql) | 暂不支持 | 不支持 |
