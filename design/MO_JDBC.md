@@ -115,4 +115,78 @@
 ### 2、ResultSet interface中的方法
 |ResultSet类中的方法|MO目前支持情况|0.6 MO是否支持|
 |:-:|:-:|:-:|
-| executeQuery(String sql) | 暂不支持 | 不支持 |
+| next() | 暂不支持 | 不支持 |
+| close() | 暂不支持 | 不支持 |
+| wasNull() | 暂不支持 | 不支持 |
+| getString(int columnIndex) | 暂不支持 | 不支持 |
+| getBoolean(int columnIndex) | 暂不支持 | 不支持 |
+| getByte(int columnIndex) | 暂不支持 | 不支持 |
+| getShort(int columnIndex) | 暂不支持 | 不支持 |
+| getInt(int columnIndex) | 暂不支持 | 不支持 |
+| getLong(int columnIndex) | 暂不支持 | 不支持 |
+| getFloat(int columnIndex) | 暂不支持 | 不支持 |
+| getDouble(int columnIndex) | 暂不支持 | 不支持 |
+| getBigDecimal(int columnIndex, int scale) | 暂不支持 | 不支持 |
+| getBytes(int columnIndex) | 暂不支持 | 不支持 |
+| getDate(int columnIndex) | 暂不支持 | 不支持 |
+| getTime(int columnIndex) | 暂不支持 | 不支持 |
+| getTimestamp(int columnIndex) | 暂不支持 | 不支持 |
+| getAsciiStream(int columnIndex) | 暂不支持 | 不支持 |
+| getUnicodeStream(int columnIndex) | 暂不支持 | 不支持 |
+| getBinaryStream(int columnIndex) | 暂不支持 | 不支持 |
+| getWarnings() | 暂不支持 | 不支持 |
+| clearWarnings() | 暂不支持 | 不支持 |
+| getCursorName() | 暂不支持 | 不支持 |
+| getMetaData() | 暂不支持 | 不支持 |
+| getObject() | 暂不支持 | 不支持 |
+| findColumn() | 暂不支持 | 不支持 |
+| getCharacterStream() | 暂不支持 | 不支持 |
+| isBeforeFirst() | 暂不支持 | 不支持 |
+| isAfterLast() | 暂不支持 | 不支持 |
+| isFirst() | 暂不支持 | 不支持 |
+| isLast() | 暂不支持 | 不支持 |
+| beforeFirst() | 暂不支持 | 不支持 |
+| afterLast() | 暂不支持 | 不支持 |
+| first() | 暂不支持 | 不支持 |
+| last() | 暂不支持 | 不支持 |
+| getRow() | 暂不支持 | 不支持 |
+| absolute() | 暂不支持 | 不支持 |
+| relative() | 暂不支持 | 不支持 |
+| previous() | 暂不支持 | 不支持 |
+| setFetchDirection() | 暂不支持 | 不支持 |
+| getFetchDirection() | 暂不支持 | 不支持 |
+| setFetchSize() | 暂不支持 | 不支持 |
+| getFetchSize() | 暂不支持 | 不支持 |
+| getType() | 暂不支持 | 不支持 |
+| getConcurrency() | 暂不支持 | 不支持 |
+| rowUpdated() | 暂不支持 | 不支持 |
+| rowInserted() | 暂不支持 | 不支持 |
+| rowDeleted() | 暂不支持 | 不支持 |
+| update()(一连串数据类型) | 暂不支持 | 不支持 |
+| updateNull() | 暂不支持 | 不支持 |
+
+
+### 4、ResultSetMetaData 中的方法
+|ResultSetMetaData 类中的方法|MO目前支持情况|0.6 MO是否支持|
+|:-:|:-:|:-:|
+| getColumnCount() | 暂不支持 | 不支持 |
+| isAutoIncrement() | 暂不支持 | 不支持 |
+| isCaseSensitive() | 暂不支持 | 不支持 |
+| isSearchable() | 暂不支持 | 不支持 |
+| isCurrency() | 暂不支持 | 不支持 |
+| isNullable() | 暂不支持 | 不支持 |
+| isSigned() | 暂不支持 | 不支持 |
+| getColumnDisplaySize() | 暂不支持 | 不支持 |
+| getColumnLabel() | 暂不支持 | 不支持 |
+| getColumnName() | 暂不支持 | 不支持 |
+| getSchemaName() | 暂不支持 | 不支持 |
+| getPrecision() | 暂不支持 | 不支持 |
+| getScale() | 暂不支持 | 不支持 |
+| getTableName() | 暂不支持 | 不支持 |
+| getCatalogName() | 暂不支持 | 不支持 |
+| getColumnType() | 暂不支持 | 不支持 |
+| getColumnTypeName() | 暂不支持 | 不支持 |
+| isReadOnly() | 暂不支持 | 不支持 |
+| isWritable() | 暂不支持 | 不支持 |
+| isDefinitelyWritable() | 暂不支持 | 不支持 |
+| getColumnClassName() | 暂不支持 | 不支持 |
