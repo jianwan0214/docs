@@ -19,9 +19,25 @@
 ![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/1G_load_time_detail.png)
 
 ### 2G数据
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/2G_load_MEM.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/2G_load_MEM_detail.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/2G_load_time.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/2G_load_time_detail.png)
 
 ### 3G数据
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/3G_load_MEM.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/3G_load_MEM_detail.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/3G_load_time.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/3G_load_time_detail.png)
 
 ### 4G数据
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/4G_load_MEM.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/4G_load_MEM_detail.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/4G_load_time.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/4G_load_time_detail.png)
 
 ### 5G数据
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/5G_load_MEM.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/5G_load_MEM_detail.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/5G_load_time.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/5G_load_time_detail.png)
