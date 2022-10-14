@@ -13,6 +13,10 @@
 
 各数据量下性能数据分析：
 ### 1G数据
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/1G_load_MEM.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/1G_load_MEM_detail.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/1G_load_time.png)
+![Image](https://github.com/jianwan0214/docs/blob/main/design/preformance_2/1G_load_time_detail.png)
 
 ### 2G数据
 
