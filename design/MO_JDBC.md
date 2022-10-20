@@ -190,3 +190,26 @@
 | isWritable() | 暂不支持 | 不支持 |
 | isDefinitelyWritable() | 暂不支持 | 不支持 |
 | getColumnClassName() | 暂不支持 | 不支持 |
+
+
+Mysql各数据类型 DisplaySize、Prec、Scale统计
+|数据类型| DisplaySize | Prec |  Scale |
+|:-:|:-:|:-:|:-:|
+| TINYINT | 4 | 4 | 0 |
+| SMALLINT | 6 | 6 | 0 |
+| INT | 11 | 11 | 0 |
+| BIGINT | 20 | 20 | 0 |
+| TINYINT UNSIGNED | 3 | 3 | 0 |
+| SMALLINT UNSIGNED | 5 | 5 | 0 |
+| INT UNSIGNED | 10 | 10 | 0 |
+| BIGINT UNSIGNED | 20 | 20 | 0 |
+| DECIMAL64(根据实际情况) | 17 | 15 | 2 |
+| DECIMAL128(根据实际情况) | 23 | 21 | 3 |
+| FLOAT | 12 | 12 | 31 |
+| DOUBLE | 22 | 22 | 31 |
+| VARCHAR(根据实际情况) | 100 | 100 | 0 |
+| CHAR(根据实际情况) | 100 | 100 | 0 |
+| DATE | 10 | 10 | 0 |
+| DATETIME | 19 | 19 | 0 |
+| TIMESTAMP | 19 | 19 | 0 |
+| JSON | 2147483647 | 2147483647 | 0 |
