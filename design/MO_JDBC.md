@@ -169,27 +169,27 @@
 ### 4、ResultSetMetaData 中的方法
 |ResultSetMetaData 类中的方法|MO目前支持情况|0.6 MO是否支持|
 |:-:|:-:|:-:|
-| getColumnCount() | 暂不支持 | 不支持 |
-| isAutoIncrement() | 暂不支持 | 不支持 |
-| isCaseSensitive() | 暂不支持 | 不支持 |
-| isSearchable() | 暂不支持 | 不支持 |
-| isCurrency() | 暂不支持 | 不支持 |
-| isNullable() | 暂不支持 | 不支持 |
-| isSigned() | 暂不支持 | 不支持 |
-| getColumnDisplaySize() | 暂不支持 | 不支持 |
-| getColumnLabel() | 暂不支持 | 不支持 |
-| getColumnName() | 暂不支持 | 不支持 |
+| getColumnCount() | 暂不支持 | 支持 |
+| isAutoIncrement() | 暂不支持 | 支持 |
+| isCaseSensitive() | 暂不支持 | 支持 |
+| isSearchable() | 暂不支持 | 支持 |
+| isCurrency() | 暂不支持 | 支持 |
+| isNullable() | 暂不支持 | 支持 |
+| isSigned() | 暂不支持 | 支持 |
+| getColumnDisplaySize() | 暂不支持 | 支持 |
+| getColumnLabel() | 暂不支持 | 支持 |
+| getColumnName() | 暂不支持 | 支持 |
 | getSchemaName() | 暂不支持 | 不支持 |
-| getPrecision() | 暂不支持 | 不支持 |
-| getScale() | 暂不支持 | 不支持 |
-| getTableName() | 暂不支持 | 不支持 |
-| getCatalogName() | 暂不支持 | 不支持 |
-| getColumnType() | 暂不支持 | 不支持 |
-| getColumnTypeName() | 暂不支持 | 不支持 |
+| getPrecision() | 暂不支持 | 支持 |
+| getScale() | 暂不支持 | 支持 |
+| getTableName() | 暂不支持 | 支持 |
+| getCatalogName() | 暂不支持 | 支持 |
+| getColumnType() | 暂不支持 | 支持 |
+| getColumnTypeName() | 暂不支持 | 支持 |
 | isReadOnly() | 暂不支持 | 不支持 |
 | isWritable() | 暂不支持 | 不支持 |
 | isDefinitelyWritable() | 暂不支持 | 不支持 |
-| getColumnClassName() | 暂不支持 | 不支持 |
+| getColumnClassName() | 暂不支持 | 支持 |
 
 
 Mysql各数据类型 DisplaySize、Prec、Scale统计
