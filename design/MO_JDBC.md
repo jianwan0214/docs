@@ -134,11 +134,11 @@
 | getAsciiStream(int columnIndex) | 暂不支持 | 支持 |
 | getUnicodeStream(int columnIndex) | 暂不支持 | 支持 |
 | getBinaryStream(int columnIndex) | 暂不支持 | 支持 |
-| getWarnings() | 暂不支持 | 支持 |
-| clearWarnings() | 暂不支持 | 支持 |
-| getCursorName() | 暂不支持 | 支持 |
+| getWarnings() | 暂不支持 | 不支持 |
+| clearWarnings() | 暂不支持 | 不支持 |
+| getCursorName() | 暂不支持 | 不支持 |
 | getMetaData() | 暂不支持 | 支持 |
-| getObject() | 暂不支持 | 支持 |
+| getObject() | 暂不支持 | 不支持 |
 | findColumn() | 暂不支持 | 支持 |
 | getCharacterStream() | 暂不支持 | 支持 |
 | isBeforeFirst() | 暂不支持 | 支持 |
