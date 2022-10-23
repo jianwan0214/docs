@@ -11,9 +11,9 @@
     回滚事务：void rollback()  
 
 
-|connection接口中的方法|MO目前支持情况|0.6 MO是否支持|
+| connection接口中的方法 | XX | 0.6 MO是否支持 |
 |:-:|:-:|:-:|
-| createStatement() | 已支持 | 支持 |
+| createStatement() | 暂不支持 | 支持 |
 | prepareStatement(String sql) | 暂不支持 | 支持 |
 | prepareCall(String sql) | 暂不支持 | 支持 |
 | nativeSQL(String sql) | 暂不支持 | 支持 |
@@ -67,7 +67,7 @@
 | getNetworkTimeout() | 暂不支持 | 支持 |
 
 ### 2、Statement类中的方法
-|Statement类中的方法|MO目前支持情况|0.6 MO是否支持|
+|Statement类中的方法| XX | 0.6 MO是否支持 |
 |:-:|:-:|:-:|
 | executeQuery(String sql) | 暂不支持 | 支持 |
 | executeUpdate(String sql) | 暂不支持 | 支持 |
@@ -113,7 +113,7 @@
 | isCloseOnCompletion() | 暂不支持 | 支持 |
 
 ### 2、ResultSet interface中的方法
-|ResultSet类中的方法|MO目前支持情况|0.6 MO是否支持|
+|ResultSet类中的方法| XX |0.6 MO是否支持|
 |:-:|:-:|:-:|
 | next() | 暂不支持 | 支持 |
 | close() | 暂不支持 | 支持 |
@@ -167,7 +167,7 @@
 
 
 ### 4、ResultSetMetaData 中的方法
-|ResultSetMetaData 类中的方法|MO目前支持情况|0.6 MO是否支持|
+| ResultSetMetaData 类中的方法 | XX | 0.6 MO是否支持 |
 |:-:|:-:|:-:|
 | getColumnCount() | 暂不支持 | 支持 |
 | isAutoIncrement() | 暂不支持 | 支持 |
