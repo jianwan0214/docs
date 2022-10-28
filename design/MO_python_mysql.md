@@ -18,7 +18,6 @@
 | update_execution_options() | 暂不支持 | 支持 |
 
 
-
 ### 2、Session（类)
 
 | Session 接口中的方法 | XX | 0.6 MO是否支持 |
@@ -189,11 +188,11 @@
 | Column 接口中的方法 | XX | 0.6 MO是否支持 |
 |:-:|:-:|:-:|
 | references() | 暂不支持 | 支持 |
-| append_foreign_key() | 暂不支持 | 支持 |
+| append_foreign_key() | 暂不支持 | 不支持 |
 | _set_parent() | 暂不支持 | 支持 |
 | _setup_on_memoized_fks() | 暂不支持 | 支持 |
 | _on_table_attach() | 暂不支持 | 支持 |
 | copy() | 暂不支持 | 支持 |
 | _merge() | 暂不支持 | 支持 |
-| _make_proxy() | 暂不支持 | 支持 |
+| _make_proxy() | 暂不支持 | 不支持 |
 
