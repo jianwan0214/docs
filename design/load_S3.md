@@ -99,7 +99,7 @@ LOAD DATA INFILE URL s3option{"endpoint"='<string>', "access_key_id"='<string>',
 对于压缩格式的文件，目前只支持如下的压缩格式：
 |Field|Description|
 |:-:|:-:|
-|compression| S3文件的压缩格式，为空表示非压缩文件，支持的字段为"auto", "none"，"gzip"，"bzip2"，"flate"，"zlib", "lz4"|
+|compression| S3文件的压缩格式，为空表示非压缩文件，支持的字段为"auto", "none"，"gzip"，"bzip2", "lz4"|
 
 ### 4、外表
 这里需要将load操作转换成insert into t1 select * from t2的形式，其中t2就是外表，t1是要插入的表，一般为普通表，这里介绍一下外表的概念。这里暂时还不支持往外表中插入数据。
