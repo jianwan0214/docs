@@ -82,10 +82,10 @@ LOAD DATA INFILE 'a.txt' INTO TABLE t1 FIELDS TERMINATED BY '|' ENCLOSED BY '\"'
 LOAD DATA INFILE '/Users/*.txt' INTO TABLE t1 FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
 
 ## 本地文件指定压缩格式load
-LOAD DATA INFILE {'filepath'='a.txt',"commpression"="none"} INTO TABLE t1 FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+LOAD DATA INFILE {'filepath'='a.txt',"compression"="none"} INTO TABLE t1 FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
 
 ## 本地文件自动检查压缩格式load
-LOAD DATA INFILE {'filepath'='a.txt',"commpression"="auto"} INTO TABLE t1 FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+LOAD DATA INFILE {'filepath'='a.txt',"compression"="auto"} INTO TABLE t1 FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
 
 ## 非指定文件压缩格式
 LOAD DATA INFILE URL s3option{"endpoint"='<string>', "access_key_id"='<string>', "secret_access_key"='<string>', "bucket"='<string>', "filepath"='<string>', "region"='<string>'} INTO TABLE t1 FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
