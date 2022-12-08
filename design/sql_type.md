@@ -52,5 +52,11 @@ mysql client连接，云平台程序，JDBC连接，python-mysql框架连接，g
 | Value | description |
 |:-:|:-:|
 | "external_mysqlclient_ sql" | mysql_client 传入MO执行的sql |
-| "external_cloudplatform_sql" | 云平台传入MO执行的sql |
+| "external_cloudplatform_sql" | 云平台 传入MO执行的sql |
+| "external_jdbc_sql" | jdbc 传入MO执行的sql |
+| "external_python-mysql_sql" | python-mysql框架传入MO执行的sql |
+| "external_go-mysql_sql" | go-mysql框架传入MO执行的sql |
+
+但是对于以上不同外部来源的sql语句，对于MO这边是不太感知的，因此考虑增加一个系统变量source_type, 可以通过set该系统变量来设置该session的sql_type。
+
 
