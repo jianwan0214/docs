@@ -8,7 +8,12 @@
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | sql_type | VARCHAR(36) | YES | | "internal_sql" | |  sql statement source type |
 
-其中sql_type的值取字符串枚举值"internal_sql", "external_sql"。下表是statement_info中已有的列信息。
+其中sql_type的值取字符串枚举值"internal_sql", "external_sql"。
+| Value | description |
+|:-:|:-:|
+| "internal_sql" | MO内部生成执行的sql|
+| "external_sql" | 外部传入MO执行的sql |
+下表是statement_info中已有的列信息。
 
 ```
 >>> show columns from statement_info;
@@ -39,3 +44,9 @@
 +-----------------------+-----------------+------+------+-----------+-------+--------------------------------------------------------------+
 21 rows in set (0.04 sec)
 ```
+
+## 2、外部sql语句的执行来源分类
+对于外部来源的sql语句，按照其外部来源可大致分类如下：
+mysql client连接，云平台程序，JDBC连接，python-mysql框架连接，go-mysql框架连接，就是需要区分不同的外部连接来源。
+对于以上的不同外部连接来源，
+
