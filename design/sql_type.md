@@ -6,7 +6,7 @@
 这里给出的方案是，在statement_info表中新增一列用于标记该sql语句的来源,
 | Field | Type | Null | Key | Default | Extra | Comment |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| sql_type | VARCHAR(36) | YES | | "" | |  sql statement source type |
+| sql_type | VARCHAR(36) | YES | | "internal_sql" | |  sql statement source type |
 
 其中sql_type的值取字符串枚举值"internal_sql", "external_sql"。下表是statement_info中已有的列信息。
 
