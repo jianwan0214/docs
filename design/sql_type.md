@@ -48,5 +48,9 @@
 ## 2、外部sql语句的执行来源分类
 对于外部来源的sql语句，按照其外部来源可大致分类如下：
 mysql client连接，云平台程序，JDBC连接，python-mysql框架连接，go-mysql框架连接，就是需要区分不同的外部连接来源。
-对于以上的不同外部连接来源，
+对于以上的不同外部连接来源，最佳的做法是将其分类为如下：
+| Value | description |
+|:-:|:-:|
+| "external_mysqlclient_ sql" | mysql_client 传入MO执行的sql |
+| "external_cloudplatform_sql" | 云平台传入MO执行的sql |
 
