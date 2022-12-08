@@ -13,6 +13,7 @@
 |:-:|:-:|
 | "internal_sql" | MO内部生成执行的sql|
 | "external_sql" | 外部传入MO执行的sql |
+
 下表是statement_info中已有的列信息。
 
 ```
