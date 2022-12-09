@@ -8,11 +8,13 @@
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | sql_source_type | VARCHAR(36) | YES | | "internal_sql" | |  sql statement source type |
 
+对于外部来源的sql语句，这里主要是指云平台外部来源，需要将其sql语句分类为：云平台用户语句，云平台非用户语句。
 其中sql_type的值取字符串枚举值"internal_sql", "external_sql"。
 | Value | description |
 |:-:|:-:|
 | "internal_sql" | MO内部生成执行的sql|
-| "external_sql" | 外部传入MO执行的sql |
+| "external_cloudplatform_user_sql" | 云平台用户语句 |
+| "external_cloudplatform_nouser_sql" | 云平台非用户语句。 |
 
 新增后statement_info的列信息如下，最后一列即为新增的列。
 
@@ -47,20 +49,6 @@
 21 rows in set (0.04 sec)
 ```
 
-## 2、外部sql语句的执行来源分类
-对于外部来源的sql语句，按照其外部来源可大致分类如下：
-mysql client连接，云平台程序，JDBC连接，python-mysql框架连接，go-mysql框架连接，就是需要区分不同的外部连接来源。
-对于以上的不同外部连接来源，最佳的做法是将其分类为如下：
-| Value | description |
-|:-:|:-:|
-| "external_mysqlclient_ sql" | mysql_client 传入MO执行的sql |
-| "external_cloudplatform_sql" | 云平台 传入MO执行的sql |
-| "external_jdbc_sql" | jdbc 传入MO执行的sql |
-| "external_python-mysql_sql" | python-mysql框架传入MO执行的sql |
-| "external_go-mysql_sql" | go-mysql框架传入MO执行的sql |
-
-"internal_sql" "external_cloudplatform_sql":user、nouser
-
-但是对于以上不同外部来源的sql语句，对于MO这边是不太感知的，因此考虑增加一个系统变量source_type, 可以通过set该系统变量来设置该session的sql_type。
+## 2、云平台语句语法
 
 
