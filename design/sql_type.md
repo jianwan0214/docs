@@ -6,7 +6,7 @@
 这里给出的方案是，在statement_info表中新增一列用于标记该sql语句的来源,
 | Field | Type | Null | Key | Default | Extra | Comment |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| sql_type | VARCHAR(36) | YES | | "internal_sql" | |  sql statement source type |
+| sql_source_type | VARCHAR(36) | YES | | "internal_sql" | |  sql statement source type |
 
 其中sql_type的值取字符串枚举值"internal_sql", "external_sql"。
 | Value | description |
@@ -14,7 +14,7 @@
 | "internal_sql" | MO内部生成执行的sql|
 | "external_sql" | 外部传入MO执行的sql |
 
-下表是statement_info中已有的列信息。
+新增后statement_info的列信息如下，最后一列即为新增的列。
 
 ```
 >>> show columns from statement_info;
@@ -42,6 +42,7 @@
 | bytes_scan            | BIGINT UNSIGNED | YES  |      | '0'       |       | bytes scan total                                             |
 | request_at            | DATETIME        | NO   |      | NULL      |       | request accept datetime                                      |
 | statement_tag         | TEXT            | NO   |      | NULL      |       | note tag in statement(Reserved)                              |
+| sql_source_type       | STRING          | NO   |      | NULL      |       | sql statement source type                                    |
 +-----------------------+-----------------+------+------+-----------+-------+--------------------------------------------------------------+
 21 rows in set (0.04 sec)
 ```
@@ -57,6 +58,8 @@ mysql client连接，云平台程序，JDBC连接，python-mysql框架连接，g
 | "external_jdbc_sql" | jdbc 传入MO执行的sql |
 | "external_python-mysql_sql" | python-mysql框架传入MO执行的sql |
 | "external_go-mysql_sql" | go-mysql框架传入MO执行的sql |
+
+"internal_sql" "external_cloudplatform_sql":user、nouser
 
 但是对于以上不同外部来源的sql语句，对于MO这边是不太感知的，因此考虑增加一个系统变量source_type, 可以通过set该系统变量来设置该session的sql_type。
 
