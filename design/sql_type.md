@@ -53,10 +53,10 @@
 云平台传入的sql语句需要在每一个sql语句前添加注释前缀，其语法格式如下：
 ```
 // 标记云平台用户语句
->>> /* cloud_user */ use db;
+>>> /$ cloud_user $/ use db;
 
 // 标记云平台非用户语句
->>> /* cloud_nouser */ use db;
+>>> /$ cloud_nouser $/ use db;
 
 ```
 
