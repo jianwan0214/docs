@@ -13,8 +13,9 @@
 | Value | description |
 |:-:|:-:|
 | "internal_sql" | MO内部生成执行的sql|
-| "external_cloudplatform_user_sql" | 云平台用户语句 |
-| "external_cloudplatform_nouser_sql" | 云平台非用户语句。 |
+| "cloud_user_sql" | 云平台用户语句 |
+| "cloud_no_user_sql" | 云平台非用户语句。 |
+| "external_sql" | 其他外部来源语句。 |
 
 新增后statement_info的列信息如下，最后一列即为新增的列。
 
