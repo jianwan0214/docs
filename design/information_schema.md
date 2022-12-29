@@ -34,3 +34,12 @@
 | COLLATION_NAME | varchar(64) | VARCHAR(8) | 未实现 |
 | GENERATION_EXPRESSION | longtext | VARCHAR(0) | 未实现 |
 | SRS_ID | int unsigned | BIGINT | 未实现 |
+
+
+## 3、schemata表
+| 列名 | mysql中列定义 | MO中列定义 | MO中是否已实现 |
+|:-:|:-:|:-:|:-:|
+| DEFAULT_CHARACTER_SET_NAME | varchar(64) | VARCHAR(7) | 未实现 |
+| DEFAULT_COLLATION_NAME | varchar(64) | VARCHAR(18) | 未实现 |
+| SQL_PATH | binary(0) | VARCHAR(0) | 未实现 |
+| DEFAULT_ENCRYPTION | varchar(64) | VARCHAR(2) | 未实现 |
