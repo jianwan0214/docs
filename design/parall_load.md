@@ -6,7 +6,7 @@
 例如，对于2个G的大文件，使用两个线程去进行load，第2个线程先seek到1G的位置，然后一直往后读，直到找到换行符，然后从换行符后开始进行文件读取，
 进行load。这样就可以做到两个线程，每个线程读取1G的数据。
 
-对于csv等普通文件，需要在load语句中增加一个字段 RECORD_PER_LINE 来开启并行load这个优化操作，具体语句如下：
+对于csv等普通文件，需要在load语句最后面增加一个字段 RECORD_PER_LINE 来开启并行load这个优化操作，具体语句如下：
  ```
 load data infile 'XXX' into table XXX FIELDS TERMINATED BY '' OPTIONALLY ENCLOSED BY '' LINES TERMINATED BY '';" RECORD_PER_LINE TRUE;
 ```
