@@ -2,8 +2,13 @@
 
 ### 1、并行load的实现细节
 
-<\br>对于一个格式良好的大文件，例如jsonline文件或者一行数据中没有换行符的csv等普通文件，就可以对该文件进行并行load，以加快load的性能。
+对于一个格式良好的大文件，例如jsonline文件或者一行数据中没有换行符的csv等普通文件，就可以对该文件进行并行load，以加快load的性能。
 例如，对于2个G的大文件，使用两个线程去进行load，第2个线程先seek到1G的位置，然后一直往后读，直到找到换行符，然后从换行符后开始进行文件读取，
 进行load。这样就可以做到两个线程，每个线程读取1G的数据。
 
-对于
+对于csv等普通文件，需要在load语句中增加一个字段 RECORD_PER_LINE 来开启并行load这个优化操作，具体语句如下：
+ ```
+load data infile 'XXX' into table XXX FIELDS TERMINATED BY '' OPTIONALLY ENCLOSED BY '' LINES TERMINATED BY '';" RECORD_PER_LINE TRUE;
+```
+其中 RECORD_PER_LINE 后面加true表示load的文件中一行内容不存在换行符，可以进行并行load操作。如果不加此字段，则默认为false。
+对于jsonline文件，因为文件中的一行内容不会存在换行符，因此jsonline文件的load默认开启并行load操作。
