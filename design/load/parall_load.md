@@ -19,3 +19,4 @@ load data infile 'XXX' into table XXX RECORD_PER_LINE TRUE;
 对于设置了 RECORD_PER_LINE 为true的情况，就需要对大文件进行并行读以加快性能。
 对于多线程读大文件，目前考虑的方案有：  
 1、对于 m 个文件，n 个线程，每个线程都平均的去读每个文件，即对于每个文件，都用 n 个线程去并行的读，达到最大的并发度。
+![Image](https://github.com/jianwan0214/docs/blob/main/design/load/WechatIMG80.png)
