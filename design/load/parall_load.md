@@ -8,7 +8,7 @@
 
 对于csv等普通文件，需要在load语句最后面增加一个字段 RECORD_PER_LINE 来开启并行load这个优化操作，具体语句如下：
  ```
-load data infile 'XXX' into table XXX RECORD_PER_LINE TRUE;
+load data infile 'XXX' into table XXX RECORD_PER_LINE 'TRUE';
 ```
 其中 RECORD_PER_LINE 后面加true表示load的文件中一行内容不存在换行符，可以进行并行load操作。如果不加此字段，则默认为false。
 对于jsonline文件，因为文件中的一行内容不会存在换行符，因此jsonline文件的load语句默认开启并行load操作。
@@ -19,4 +19,12 @@ load data infile 'XXX' into table XXX RECORD_PER_LINE TRUE;
 对于设置了 RECORD_PER_LINE 为true的情况，就需要对大文件进行并行读以加快性能。
 对于多线程读大文件，目前考虑的方案有：  
 1、对于 m 个文件，n 个线程，每个线程都平均的去读每个文件，即对于每个文件，都用 n 个线程去并行的读，达到最大的并发度。
-![Image](https://github.com/jianwan0214/docs/blob/main/design/load/WechatIMG80.png)
+
+![Image](https://github.com/jianwan0214/docs/blob/main/design/load/WechatIMG80.png)   
+
+其中offset表示seek的位置，size表示要读的字节数，-1则表示读到文件结束。
+此方案则不考虑具体的文件大小，对每个文件拆分成 n 等分的位置，每个线程去读对应的文件内容。
+
+2、对于 m 个文件，n 个线程，考虑对小文件不进行拆分，仅对大文件进行拆分，并且尽可能的均分，使得每个线程需要读取的线程数相差不大。   
+这里的大文件的标准可以设置为超过1G就对其进行拆分read。
+
