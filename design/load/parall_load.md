@@ -8,7 +8,14 @@
 
 对于csv等普通文件，需要在load语句最后面增加一个字段 RECORD_PER_LINE 来开启并行load这个优化操作，具体语句如下：
  ```
+ // 打开并行load优化
 load data infile 'XXX' into table XXX RECORD_PER_LINE 'TRUE';
+
+ // 关闭并行load优化
+load data infile 'XXX' into table XXX RECORD_PER_LINE 'false';
+
+ // 默认关闭并行load优化
+load data infile 'XXX' into table XXX;
 ```
 其中 RECORD_PER_LINE 后面加true表示load的文件中一行内容不存在换行符，可以进行并行load操作。如果不加此字段，则默认为false。
 对于jsonline文件，因为文件中的一行内容不会存在换行符，因此jsonline文件的load语句默认开启并行load操作。
