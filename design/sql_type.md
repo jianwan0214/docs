@@ -14,7 +14,7 @@
 |:-:|:-:|
 | "internal_sql" | MO内部生成执行的sql|
 | "cloud_user_sql" | 云平台用户语句 |
-| "cloud_no_user_sql" | 云平台非用户语句。 |
+| "cloud_nonuser_sql" | 云平台非用户语句。 |
 | "external_sql" | 其他外部来源语句。 |
 
 新增后statement_info的列信息如下，最后一列即为新增的列。
@@ -57,7 +57,7 @@
 >>> /* cloud_user */ use db;
 
 // 标记云平台非用户语句
->>> /* cloud_nouser */ use db;
+>>> /* cloud_nonuser */ use db;
 
 ```
 
