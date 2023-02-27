@@ -35,7 +35,6 @@ mysql> select * from t1;
 4 rows in set (0.00 sec)
 ```
 
-
 ### 带精度浮点数的实现细节
   mysql中对于精度浮点数的实现，是采取对输入的浮点数进行对应位数的四舍五入，具体的mysql文件参见 sql/field.cc中type_conversion_status Field_float::store(double nr)函数，以及Field_real::Truncate_result Field_real::truncate(double *nr, double max_value) 函数。具体代码逻辑如下：
 ```
@@ -178,3 +177,7 @@ Empty set (0.00 sec)
 ```
 可以看到，90.01在普通float类型下，进行大于90.01的比较，左边为float类型，右边为double类型，在将float转成double类型中，存在精度损失，导致结果为true，这也是由于float的近似值表示所导致的。而double类型由于位数比较多，因此可以得到正确结果。
 而对于带精度的float值比较，由于存在精度的控制，因此也能得到正确的结果。
+
+### MO的带精度浮点数的0.8设计方案
+  对于MO的精度浮点数设计，其M和D的取值范围与mysql一致，即（1=< M <=255），D的取值范围为（1=< D <=30），并且需要 M >= D，另外在结果展示中，考虑位数末尾补0操作。  
+  精度浮点数的规范化操作与mysql一致，对指定位数进行四舍五入操作。将规范化后的数值依然保存为对应的float&double类型。
