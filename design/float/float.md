@@ -111,10 +111,69 @@ mysql> select * from t1;
 | 1.56 |
 +------+
 3 rows in set (0.00 sec)
+
+mysql> create table t2(a decimal(30, 20));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into t2 select * from t1;
+Query OK, 4 rows affected (0.03 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from t2;
++------------------------+
+| a                      |
++------------------------+
+| 1.54999995231628420000 |
+| 1.54999995231628420000 |
+| 1.55999994277954100000 |
++------------------------+
+3 rows in set (0.00 sec)
 ```
 可以看到在mysql的转换中，将1.555四舍五入为了1.55。这是因为1.555在float中具体位数为1.5549999475479125976562500，而在double类型中具体位数为1.5549999999999999378275106，
 可以看到在进行四舍五入时，第三位小数位置为4，因此虽然字面值为1.555，但仍然会被舍入为1.55，这是由于浮点数的设计所造成的精度损失。因为浮点值是近似值而不是存储为精确值，所以尝试在比较中将它们视为精确值可能会导致问题，它们还受平台或实现依赖性的影响。
 
 
 ### 带精度浮点数的比较问题
+  在mysql中，对于普通浮点数和带精度的浮点数比较，其结果会有一点不同。
+```
+mysql> create table t1(a float(5, 2));
+Query OK, 0 rows affected, 1 warning (0.01 sec)
 
+mysql> insert into t1 values(90.012);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from t1;
++-------+
+| a     |
++-------+
+| 90.01 |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select * from t1 where a>90.01;
+Empty set (0.01 sec)
+
+mysql> create table t2(a float);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into t2 values(90.01);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from t2 where a>90.01;
++-------+
+| a     |
++-------+
+| 90.01 |
++-------+
+1 row in set (0.00 sec)
+
+mysql> create table t3(a double);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into t3 values(90.01);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from t3 where a>90.01;
+Empty set (0.00 sec)
+```
+可以看到，90.01在普通float类型下，进行大于90.01的比较，结果为true，这也是由于float的近似值表示所导致的。
