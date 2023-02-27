@@ -74,21 +74,26 @@ Field_real::Truncate_result Field_real::truncate(double *nr, double max_value) {
 
 并且在mysql中，精度浮点数在经过四舍五入规范化之后，数值仍然保存为普通浮点数，因此可能会存在一些精度损失问题。例如：
 ```
-mysql> create table t1(a float(1, 0));
-Query OK, 0 rows affected, 1 warning (0.03 sec)
+create table t1(a float(5, 2));
+Query OK, 0 rows affected, 1 warning (0.08 sec)
 
-mysql> insert into t1 values(1.4), (1.5), (1.6);
-Query OK, 3 rows affected (0.01 sec)
+mysql> insert into t1 values(1.554), (1.555), (1.556);
+Query OK, 3 rows affected (0.00 sec)
 Records: 3  Duplicates: 0  Warnings: 0
 
 mysql> select * from t1;
 +------+
 | a    |
 +------+
-|    1 |
-|    1 |
-|    2 |
+| 1.55 |
+| 1.55 |
+| 1.56 |
 +------+
 3 rows in set (0.00 sec)
 ```
-可以看到在mysql的转换中，将1.5四舍五入为了1。
+可以看到在mysql的转换中，将1.555四舍五入为了1.55。这是因为1.555在float中具体位数为1.5549999475479125976562500，而在double类型中具体位数为1.5549999999999999378275106，
+可以看到在进行四舍五入时，第三位小数位置为4，因此虽然字面值为1.555，但仍然会被舍入为1.55，这是由于浮点数的设计所造成的精度损失。因为浮点值是近似值而不是存储为精确值，所以尝试在比较中将它们视为精确值可能会导致问题，它们还受平台或实现依赖性的影响。
+
+
+### 带精度浮点数的比较问题
+
