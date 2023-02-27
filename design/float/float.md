@@ -176,4 +176,5 @@ Query OK, 1 row affected (0.06 sec)
 mysql> select * from t3 where a>90.01;
 Empty set (0.00 sec)
 ```
-可以看到，90.01在普通float类型下，进行大于90.01的比较，结果为true，这也是由于float的近似值表示所导致的。
+可以看到，90.01在普通float类型下，进行大于90.01的比较，左边为float类型，右边为double类型，在将float转成double类型中，存在精度损失，导致结果为true，这也是由于float的近似值表示所导致的。而double类型由于位数比较多，因此可以得到正确结果。
+而对于带精度的float值比较，由于存在精度的控制，因此也能得到正确的结果。
