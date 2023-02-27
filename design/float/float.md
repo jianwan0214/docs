@@ -14,6 +14,27 @@ mysql> show warnings;
 +---------+------+------------------------------------------------------------------------------------------------------------------+
 1 row in set (0.02 sec)
 ```
+在结果展示中，带精度的浮点数只会展示出要求的精度的位数，另外在位数不足时，会进行末尾补0操作。
+```
+mysql> create table t1(a float(5, 2));
+Query OK, 0 rows affected, 1 warning (0.11 sec)
+
+mysql> insert into t1 values(1), (2.5), (3.56), (4.678);
+Query OK, 4 rows affected (0.07 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from t1;
++------+
+| a    |
++------+
+| 1.00 |
+| 2.50 |
+| 3.56 |
+| 4.68 |
++------+
+4 rows in set (0.00 sec)
+```
+
 
 ### 带精度浮点数的实现细节
   mysql中对于精度浮点数的实现，是采取对输入的浮点数进行对应位数的四舍五入，具体的mysql文件参见 sql/field.cc中type_conversion_status Field_float::store(double nr)函数，以及Field_real::Truncate_result Field_real::truncate(double *nr, double max_value) 函数。具体代码逻辑如下：
@@ -74,7 +95,7 @@ Field_real::Truncate_result Field_real::truncate(double *nr, double max_value) {
 
 并且在mysql中，精度浮点数在经过四舍五入规范化之后，数值仍然保存为普通浮点数，因此可能会存在一些精度损失问题。例如：
 ```
-create table t1(a float(5, 2));
+mysql> create table t1(a float(5, 2));
 Query OK, 0 rows affected, 1 warning (0.08 sec)
 
 mysql> insert into t1 values(1.554), (1.555), (1.556);
