@@ -3,10 +3,10 @@
 ### 带精度浮点数的基本概念
   带精度的浮点数的基本语法为float(M, D), double(M, D)，其中mysql规定中，M的范围为（1=< M <=255），D的取值范围为（1=< D <=30），并且需要 M >= D，其中float和double的M，D的取值范围是一样的。这里建议 MO 的取值范围与mysql一致。下面为在mysql中执行的结果，并且注意到，在mysql中提示，带精度的浮点数类型会在未来的版本中移除。
 ```
->> create table t1(a float(1,0));
+mysql> create table t1(a float(1,0));
 Query OK, 0 rows affected, 1 warning (0.01 sec)
 
->> show warnings;
+mysql> show warnings;
 +---------+------+------------------------------------------------------------------------------------------------------------------+
 | Level   | Code | Message                                                                                                          |
 +---------+------+------------------------------------------------------------------------------------------------------------------+
@@ -72,4 +72,23 @@ Field_real::Truncate_result Field_real::truncate(double *nr, double max_value) {
 }
 ```
 
-并且
+并且在mysql中，精度浮点数在经过四舍五入规范化之后，数值仍然保存为普通浮点数，因此可能会存在一些精度损失问题。例如：
+```
+mysql> create table t1(a float(1, 0));
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+mysql> insert into t1 values(1.4), (1.5), (1.6);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from t1;
++------+
+| a    |
++------+
+|    1 |
+|    1 |
+|    2 |
++------+
+3 rows in set (0.00 sec)
+```
+可以看到在mysql的转换中，将1.5四舍五入为了1。
