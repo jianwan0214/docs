@@ -15,4 +15,8 @@ abc",abc
 ### 3、结束符说明
 通过LINES TERMINATED BY 'char'来设置，即为一行的结束符号，常见的有'\n', '\r\n'
 
-xxx
+### 4、rfc4180标准介绍
+rfc4180是一种关于csv文件的格式，其中规定的格式如下：  
+1、每条记录位于单独的一行，由换行符（CRLF）分隔，例如：  
+aaa,bbb,ccc CRLF  
+zzz,yyy,xxx CRLF
