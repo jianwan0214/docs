@@ -43,4 +43,12 @@ IF NOT EXISTS：在创建数据库之前进行判断，只有该数据库目前�
 [DEFAULT] COLLATE：指定字符集的默认校对规则。
 ```
 
+### 2、DROP DATABASE 语法
+```
+DROP DATABASE [ IF EXISTS ] <数据库名>
+语法说明如下：
+<数据库名>：指定要删除的数据库名。
+IF EXISTS：用于防止当数据库不存在时发生错误。
+DROP DATABASE：删除数据库中的所有表格并同时删除数据库。使用此语句时要非常小心，以免错误删除。如果要使用 DROP DATABASE，需要获得数据库 DROP 权限。
+```
 
