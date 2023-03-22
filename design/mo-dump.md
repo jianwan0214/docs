@@ -25,6 +25,7 @@ mysqldump 选项
 |:-:|
 | CREATE DATABASE |
 | DROP DATABASE |
+| USE DATABASE |
 | DROP TABLE |
 | CREATE TABLE |
 | INSERT INTO TABLE |
@@ -52,3 +53,24 @@ IF EXISTS：用于防止当数据库不存在时发生错误。
 DROP DATABASE：删除数据库中的所有表格并同时删除数据库。使用此语句时要非常小心，以免错误删除。如果要使用 DROP DATABASE，需要获得数据库 DROP 权限。
 ```
 
+
+可以使用SHOW ENGINES;语句查看系统所支持的引擎类型，结果如下所示。
+```
+mysql> SHOW ENGINES;
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| ndbcluster         | NO      | Clustered, fault-tolerant tables                               | NULL         | NULL | NULL       |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+| ndbinfo            | NO      | MySQL Cluster system information storage engine                | NULL         | NULL | NULL       |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+11 rows in set (0.00 sec)
+```
