@@ -55,6 +55,7 @@ col3 text,
 col4 varchar(225)  
 );  
 
+#### case 1
 对于如下文件：  
 aa""""aa,bb""""bb,cc""""cc,dd""""dd
 "aa""""aa","bb""""bb","cc""""cc","dd""""dd"
