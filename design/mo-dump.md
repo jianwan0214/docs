@@ -28,3 +28,19 @@ mysqldump 选项
 | DROP TABLE |
 | CREATE TABLE |
 | INSERT INTO TABLE |
+| REPLACE SQL |
+
+### 1、CREATE DATABASE 语法
+```
+CREATE DATABASE [IF NOT EXISTS] <数据库名>
+[[DEFAULT] CHARACTER SET <字符集名>] 
+[[DEFAULT] COLLATE <校对规则名>];
+
+[ ]中的内容是可选的。语法说明如下：
+<数据库名>：创建数据库的名称。MySQL 的数据存储区将以目录方式表示 MySQL 数据库，因此数据库名称必须符合操作系统的文件夹命名规则，不能以数字开头，尽量要有实际意义。注意在 MySQL 中不区分大小写。
+IF NOT EXISTS：在创建数据库之前进行判断，只有该数据库目前尚不存在时才能执行操作。此选项可以用来避免数据库已经存在而重复创建的错误。
+[DEFAULT] CHARACTER SET：指定数据库的字符集。指定字符集的目的是为了避免在数据库中存储的数据出现乱码的情况。如果在创建数据库时不指定字符集，那么就使用系统的默认字符集。
+[DEFAULT] COLLATE：指定字符集的默认校对规则。
+```
+
+
