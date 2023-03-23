@@ -105,3 +105,17 @@ SET <列名1> = <值1>,
     <列名2> = <值2>,
     …
 ```
+
+### 6、REPLACE 语法
+```
+MySQL REPLACE语句是标准SQL的MySQL扩展。MySQL REPLACE语句的工作原理如下：
+
+如果新行已不存在，则MySQL REPLACE  语句将插入新行。
+如果新行已存在，则  REPLACE  语句首先删除旧行，然后插入新行。在某些情况下，REPLACE语句仅更新现有行。
+要确定表中是否已存在新行，MySQL使用PRIMARY KEY或UNIQUE KEY 索引。如果表没有这些索引之一，则REPLACE语句等同于INSERT语句。
+
+使用REPLACE语句时需要了解几个要点：
+
+如果您开发的应用程序不仅支持MySQL数据库，还支持其他关系数据库管理系统（RDBMS），则应避免使用REPLACE语句，因为其他RDBMS可能不支持它。相反，您可以在事务中使用DELETE  和  INSERT语句的组合  。
+如果您使用的是REPLACE在具有TABLE语句触发器和重复键错误发生的删除，触发器将按照以下顺序被解雇：BEFORE INSERT BEFORE DELETE，AFTER DELETE，AFTER INSERT  万一REPLACE语句删除当前行并插入新行。如果REPLACE语句更新当前行，则会触发BEFORE UPDATE和AFTER UPDATE触发器。
+```
