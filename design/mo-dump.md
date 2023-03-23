@@ -31,7 +31,7 @@ mysqldump 选项
 | INSERT INTO TABLE |
 | REPLACE SQL |
 
-### 1、CREATE DATABASE 语法
+### 2、CREATE DATABASE 语法
 ```
 CREATE DATABASE [IF NOT EXISTS] <数据库名>
 [[DEFAULT] CHARACTER SET <字符集名>] 
@@ -44,7 +44,7 @@ IF NOT EXISTS：在创建数据库之前进行判断，只有该数据库目前�
 [DEFAULT] COLLATE：指定字符集的默认校对规则。
 ```
 
-### 2、DROP DATABASE 语法
+### 3、DROP DATABASE 语法
 ```
 DROP DATABASE [ IF EXISTS ] <数据库名>
 语法说明如下：
@@ -73,4 +73,35 @@ mysql> SHOW ENGINES;
 | ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
 +--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
 11 rows in set (0.00 sec)
+```
+
+### 4、CREATE TABLE 语法
+```
+CREATE TABLE <表名> ([表定义选项])[表选项][分区选项];
+其中，[表定义选项]的格式为：
+<列名1> <类型1> [,…] <列名n> <类型n>
+CREATE TABLE 命令语法比较多，其主要是由表创建定义（create-definition）、表选项（table-options）和分区选项（partition-options）所组成的。
+```
+
+### 5、INSERT INTO TABLE 语法
+INSERT 语句有两种语法形式，分别是 INSERT…VALUES 语句和 INSERT…SET 语句。  
+1、INSERT ... VALUES语句  
+INSERT VALUES 的语法格式为：
+```
+INSERT INTO <表名> [ <列名1> [ , … <列名n>] ]
+VALUES (值1) [… , (值n) ];
+
+语法说明如下。
+<表名>：指定被操作的表名。
+<列名>：指定需要插入数据的列名。若向表中的所有列插入数据，则全部的列名均可以省略，直接采用 INSERT<表名>VALUES(…) 即可。
+VALUES 或 VALUE 子句：该子句包含要插入的数据清单。数据清单中数据的顺序要和列的顺序相对应。
+```
+
+2、INSERT…SET语句  
+语法格式为：
+```
+INSERT INTO <表名>
+SET <列名1> = <值1>,
+    <列名2> = <值2>,
+    …
 ```
